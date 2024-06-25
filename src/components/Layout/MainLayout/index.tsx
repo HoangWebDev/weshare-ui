@@ -1,7 +1,8 @@
-import Header from '~/components/Header/Header';
+import Header from '~/components/Layout/components/Header/Header';
 import Nav from '~/components/Layout/MainLayout/Nav/Nav';
+import { PropChildren } from '~/types/Interface/responsiveInterface';
 
-function MainLayout({ children }: any) {
+function MainLayout({ children }: PropChildren) {
     return (
         <div className="App">
             <Header />

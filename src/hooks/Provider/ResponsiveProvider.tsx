@@ -1,10 +1,7 @@
 import React, { useState, useEffect, createContext, useReducer, ReactNode } from 'react';
 import { initState, reducer } from '~/hooks/Reducer/reducers';
 import { styleMenu } from '~/hooks/Reducer/actions';
-
-interface ResponsiveProviderProps {
-    children: ReactNode; // Sử dụng ReactNode để xác định kiểu dữ liệu cho children
-}
+import { PropChildren } from '~/types/Interface/responsiveInterface';
 
 export const ResponsiveContext = createContext({
     responsive: false,
@@ -12,7 +9,7 @@ export const ResponsiveContext = createContext({
     toggleNav: () => {},
 });
 
-function ResponsiveProvider({ children }: ResponsiveProviderProps) {
+function ResponsiveProvider({ children }: PropChildren) {
     const [state, dispacth] = useReducer(reducer, initState);
     const [responsive, setResponsive] = useState(window.innerWidth < 768);
     const [openNav, setOpnNav] = useState(false);

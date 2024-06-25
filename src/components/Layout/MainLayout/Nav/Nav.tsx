@@ -12,6 +12,7 @@ import {
 import { Link } from 'react-router-dom';
 import avatar from '~/assets/images/avatar.jpg'; // Giả sử đây là đường dẫn đúng
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { CalendarIcon, HomeIcon, TvIcon, UserIcon, ImageIcon, ShopIcon, FolderIcon } from '~/components/Icons';
 import ResponsiveProvider, { ResponsiveContext } from '~/hooks/Provider/ResponsiveProvider';
 
 function Nav() {
@@ -59,43 +60,43 @@ function Nav() {
                 <ul className="bg-white p-4 rounded-[5px] mb-2">
                     <li>
                         <Link to="/feed" className={getClass('feed')} onClick={() => handleMenu('feed')}>
-                            <FontAwesomeIcon className="text-sm p-1 rounded size-4" icon={faHouse} />
+                            <HomeIcon />
                             <p className="text-sm">Feed</p>
                         </Link>
                     </li>
                     <li>
                         <Link to="/friend" className={getClass('friend')} onClick={() => handleMenu('friend')}>
-                            <FontAwesomeIcon className="text-sm p-1 rounded  size-4" icon={faUser} />
+                            <UserIcon />
                             <p className="text-sm">Friend</p>
                         </Link>
                     </li>
                     <li>
                         <Link to="/event" className={getClass('event')} onClick={() => handleMenu('event')}>
-                            <FontAwesomeIcon className="text-sm p-1 rounded  size-4" icon={faCalendarDays} />
+                            <CalendarIcon />
                             <p className="text-sm">Event</p>
                         </Link>
                     </li>
                     <li>
                         <Link to="/watch" className={getClass('watch')} onClick={() => handleMenu('watch')}>
-                            <FontAwesomeIcon className="text-sm p-1 rounded  size-4" icon={faTv} />
+                            <TvIcon />
                             <p className="text-sm">Watch</p>
                         </Link>
                     </li>
                     <li>
                         <Link to="/photos" className={getClass('photos')} onClick={() => handleMenu('photos')}>
-                            <FontAwesomeIcon className="text-sm p-1 rounded  size-4" icon={faImage} />
+                            <ImageIcon />
                             <p className="text-sm">Photos</p>
                         </Link>
                     </li>
                     <li>
                         <Link to="/shop" className={getClass('shop')} onClick={() => handleMenu('shop')}>
-                            <FontAwesomeIcon className="text-sm p-1 rounded  size-4" icon={faShop} />
+                            <ShopIcon />
                             <p className="text-sm">Shop</p>
                         </Link>
                     </li>
                     <li>
                         <Link to="/files" className={getClass('files')} onClick={() => handleMenu('files')}>
-                            <FontAwesomeIcon className="text-sm p-1 rounded  size-4" icon={faFolder} />
+                            <FolderIcon />
                             <p className="text-sm">Files</p>
                         </Link>
                     </li>
@@ -130,7 +131,7 @@ function Nav() {
                                 context.toggleNav();
                             }}
                         >
-                            <FontAwesomeIcon className="text-sm p-1 rounded size-4" icon={faHouse} />
+                            <HomeIcon />
                             <p className="text-sm">Feed</p>
                         </Link>
                     </li>
@@ -143,7 +144,7 @@ function Nav() {
                                 context.toggleNav();
                             }}
                         >
-                            <FontAwesomeIcon className="text-sm p-1 rounded  size-4" icon={faUser} />
+                            <UserIcon />
                             <p className="text-sm">Friend</p>
                         </Link>
                     </li>
@@ -156,7 +157,7 @@ function Nav() {
                                 context.toggleNav();
                             }}
                         >
-                            <FontAwesomeIcon className="text-sm p-1 rounded  size-4" icon={faCalendarDays} />
+                            <CalendarIcon />
                             <p className="text-sm">Event</p>
                         </Link>
                     </li>
@@ -169,7 +170,7 @@ function Nav() {
                                 context.toggleNav();
                             }}
                         >
-                            <FontAwesomeIcon className="text-sm p-1 rounded  size-4" icon={faTv} />
+                            <TvIcon />
                             <p className="text-sm">Watch</p>
                         </Link>
                     </li>
@@ -182,7 +183,7 @@ function Nav() {
                                 context.toggleNav();
                             }}
                         >
-                            <FontAwesomeIcon className="text-sm p-1 rounded  size-4" icon={faImage} />
+                            <ImageIcon />
                             <p className="text-sm">Photos</p>
                         </Link>
                     </li>
@@ -195,7 +196,7 @@ function Nav() {
                                 context.toggleNav();
                             }}
                         >
-                            <FontAwesomeIcon className="text-sm p-1 rounded  size-4" icon={faShop} />
+                            <ShopIcon />
                             <p className="text-sm">Shop</p>
                         </Link>
                     </li>
@@ -208,7 +209,7 @@ function Nav() {
                                 context.toggleNav();
                             }}
                         >
-                            <FontAwesomeIcon className="text-sm p-1 rounded  size-4" icon={faFolder} />
+                            <FontAwesomeIcon className="text-sm p-1 rounded size-4" icon={faFolder} />
                             <p className="text-sm">Files</p>
                         </Link>
                     </li>

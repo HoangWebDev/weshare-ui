@@ -2,7 +2,8 @@ import React, { useState, useContext, useEffect } from 'react';
 import Images from '~/assets/images/avatar.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle, faCamera, faVideo, faImage, faPaperclip, faClose } from '@fortawesome/free-solid-svg-icons';
-import { PostFormProps } from '~/types/postFormInterface';
+import { PostFormProps } from '~/types/Interface/formInterface';
+import Button from '~/components/Button/Buton';
 
 function PostForm({ openPost, togglePostForm }: PostFormProps) {
     return (
@@ -38,12 +39,9 @@ function PostForm({ openPost, togglePostForm }: PostFormProps) {
                         <FontAwesomeIcon icon={faImage} className="text-md text-green-500" />
                         <FontAwesomeIcon icon={faPaperclip} className="text-md text-yellow-500" />
                     </div>
-                    <button
-                        className="w-full bg-gray-300 text-gray-400 py-2 px-2 rounded-md hover:bg-[blue] hover:text-white transition-all duration-300 font-semibold"
-                        type="submit"
-                    >
+                    <Button className="w-full bg-gray-300 text-gray-400 py-2 px-2 rounded-md hover:bg-[blue] hover:text-white transition-all duration-300 font-semibold">
                         Posts
-                    </button>
+                    </Button>
                 </form>
             </div>
             <div

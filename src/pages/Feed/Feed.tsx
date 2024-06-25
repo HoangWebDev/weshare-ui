@@ -6,6 +6,7 @@ import { faHeart, faComment, faShareFromSquare } from '@fortawesome/free-regular
 import ResponsiveProvider, { ResponsiveContext } from '~/hooks/Provider/ResponsiveProvider';
 import PostForm from '~/features/Post/PostForm';
 import Contact from '~/pages/Contact/Contact';
+import Button from '~/components/Button/Buton';
 
 function Feed() {
     const [openPost, setOpenPost] = useState(false);
@@ -43,28 +44,28 @@ function Feed() {
                 <div className="p-4 bg-white rounded-lg mt-2">
                     <div className="flex items-center gap-x-2">
                         <img src={Images} alt="Images" className="w-12 h-12 rounded-full" />
-                        <button
+                        <Button
                             className="w-full pl-5 text-left text-sm text-gray-400 cursor-pointer py-2 rounded-[10px] border-none outline-none bg-gray-200"
                             onClick={() => setOpenPost(!openPost)}
                         >
                             What's on your mind, Huỳnh Hoàng?
-                        </button>
+                        </Button>
                         <PostForm openPost={openPost} togglePostForm={togglePostForm} />
                     </div>
                     <hr className="my-1" />
                     <div className="pt-2 flex justify-start gap-x-12">
-                        <div className="flex gap-x-2 items-center">
+                        <Button className="flex gap-x-2 items-center">
                             <FontAwesomeIcon icon={faVideo} className="text-sm text-red-500" />
                             <p className="text-sm font-semibold text-gray-400">Live Video</p>
-                        </div>
-                        <div className="flex gap-x-2 items-center">
+                        </Button>
+                        <Button className="flex gap-x-2 items-center">
                             <FontAwesomeIcon icon={faImage} className="text-sm text-green-500" />
                             <p className="text-sm font-semibold text-gray-400">Image/Video</p>
-                        </div>
-                        <div className="flex gap-x-2 items-center">
+                        </Button>
+                        <Button className="flex gap-x-2 items-center">
                             <FontAwesomeIcon icon={faPaperclip} className="text-sm text-yellow-500" />
                             <p className="text-sm font-semibold text-gray-400">Attachment</p>
-                        </div>
+                        </Button>
                     </div>
                 </div>
                 <div className="mx-0 mt-2 mb-5">
@@ -126,15 +127,14 @@ function Feed() {
                                             className="content--input"
                                             placeholder="Write a comment..."
                                         />
-                                        <button className="content--btn" type="submit">
-                                            Comment
-                                        </button>
+                                        <Button className="content--btn">Comment</Button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <Contact />
             </section>
             {/* Responsive */}
             <section
@@ -262,7 +262,6 @@ function Feed() {
                     </div>
                 </div>
             </section>
-            <Contact />
         </>
     );
 }

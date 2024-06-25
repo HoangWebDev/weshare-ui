@@ -1,18 +1,14 @@
 import React, { useState, useEffect, useRef, useReducer, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faMagnifyingGlass,
-    faBell,
-    faBookmark,
-    faBars,
-    faAngleDown,
-    faAngleUp,
-} from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faBell, faBookmark, faBars, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
-import logo from '~/assets/images/logo.jpg'; // Giả sử đây là đường dẫn đúng
+
 import { reducer, initState } from '~/hooks/Reducer/reducers';
 import { search, styleSearch, styleMenu } from '~/hooks/Reducer/actions';
 import ResponsiveProvider, { ResponsiveContext } from '~/hooks/Provider/ResponsiveProvider';
+import Search from '../Search/Search';
+import { BellIcon, BookMarkIcon, PersonIcon } from '~/components/Icons';
+import logo from '~/assets/images/logo.jpg'; // Giả sử đây là đường dẫn đúng
 
 //Reducer
 function Header() {
@@ -20,29 +16,19 @@ function Header() {
     const [state, dispacth] = useReducer(reducer, initState);
     const context = useContext(ResponsiveContext);
 
-    // const inputSearch = useRef()
-
     return (
-        <header className="grid grid-cols-4 gap-4 px-5 gap-x-5 fixed inset-x-0 top-0 mx-auto bg-white z-10">
+        <header className="grid grid-cols-3 gap-4 px-5 gap-x-5 fixed inset-x-0 top-0 mx-auto bg-white z-10">
             <div className="col-span-1 flex items-center gap-x-2.5 py-[10px] hidden md:flex">
                 <img src={logo} alt="Logo" className="select-none w-8 h-8 rounded-md" />
                 <h2 className="text-xl font-bold">WeShare</h2>
             </div>
-            <div className="col-span-2 flex items-center gap-x-2.5 relative py-[10px]  hidden md:flex">
-                <FontAwesomeIcon
-                    icon={faMagnifyingGlass}
-                    className="absolute left-1 p-1 z-10 border-none text-gray-500"
-                />
-                <input
-                    type="text"
-                    className="w-full py-1 pr-1 pl-7 rounded-md outline-none bg-neutral-100 transition-shadow focus:shadow-sm focus:shadow-blue-700"
-                />
-            </div>
+            {/* Search */}
+            <Search />
             <div className="col-span-1 flex items-center justify-end gap-x-2.5 py-[10px]  hidden md:flex">
-                <FontAwesomeIcon icon={faBell} className="text-gray-500 rounded-md text-xl p-1 bg-gray-300" />
-                <FontAwesomeIcon icon={faBookmark} className="text-gray-500 rounded-md text-xl p-1 bg-gray-300" />
+                <BellIcon />
+                <BookMarkIcon className="text-gray-500 rounded-md text-xl p-1 bg-gray-300" />
                 <div className="flex items-center gap-x-2 cursor-pointer">
-                    <FontAwesomeIcon icon={faUser} className="text-gray-500 rounded-md text-xl p-1 bg-gray-300 " />
+                    <PersonIcon className="text-gray-500 rounded-md text-xl p-1 bg-gray-300 " />
                     <h2 className="text-sm font-semibold">Name</h2>
                     <FontAwesomeIcon icon={faAngleDown} className="text-gray-500 rounded-md text-sm" />
                 </div>
@@ -81,7 +67,7 @@ function Header() {
             </div>
             <div
                 className={
-                    context.responsive ? 'block col-span-2 flex items-center gap-x-2.5 relative py-[10px]' : 'hidden'
+                    context.responsive ? 'block col-span-1 flex items-center gap-x-2.5 relative py-[10px]' : 'hidden'
                 }
             >
                 <input
