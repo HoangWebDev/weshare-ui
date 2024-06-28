@@ -1,8 +1,8 @@
-import { FunctionComponent } from 'react';
+import { ReactNode } from 'react';
 
 // Định nghĩa một kiểu cho route
 export type Route = {
     path: string;
-    component: FunctionComponent;
-    layout?: FunctionComponent | null;
+    component: React.ComponentType<any>;
+    layout?: React.FC<{ children: ReactNode }> | null;
 };

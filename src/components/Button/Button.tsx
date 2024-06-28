@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { PropChildren } from '~/types/Interface/responsiveInterface';
 import { Link } from 'react-router-dom';
 function Button({ children, to, href, className, onClick, ...passProp }: PropChildren) {
@@ -27,3 +28,12 @@ function Button({ children, to, href, className, onClick, ...passProp }: PropChi
 }
 
 export default Button;
+
+//Proptypes
+Button.propTypes = {
+    children: PropTypes.node.isRequired,
+    to: PropTypes.string,
+    href: PropTypes.string,
+    className: PropTypes.string,
+    onClick: PropTypes.func,
+};

@@ -1,9 +1,8 @@
-import React, { useState, useContext } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Images from '~/assets/images/avatar.jpg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ResponsiveProvider, { ResponsiveContext } from '~/hooks/Provider/ResponsiveProvider';
-import Button from '~/components/Button/Buton';
+import { ResponsiveContext } from '~/features/Provider/ResponsiveProvider';
+import Button from '~/components/Button/Button';
 
 function Friend() {
     const context = useContext(ResponsiveContext);

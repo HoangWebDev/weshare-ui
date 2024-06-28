@@ -8,6 +8,7 @@ const classesNavbar = 'text-sm p-1 rounded';
 const widthIconNavbar = '24px';
 const heightIconNavbar = '24px';
 
+//Header Icons
 export const SearchIcon = ({ className }: IconProps) => (
     <svg className={className} viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -23,6 +24,15 @@ export const CloseSearchIcon = ({ className }: IconProps) => (
         <path
             fill="currentColor"
             d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"
+        ></path>
+    </svg>
+);
+
+export const SpinnerIcon = ({ className }: IconProps) => (
+    <svg className={className} role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path
+            fill="currentColor"
+            d="M304 48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zm0 416a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM48 304a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm464-48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM142.9 437A48 48 0 1 0 75 369.1 48 48 0 1 0 142.9 437zm0-294.2A48 48 0 1 0 75 75a48 48 0 1 0 67.9 67.9zM369.1 437A48 48 0 1 0 437 369.1 48 48 0 1 0 369.1 437z"
         ></path>
     </svg>
 );
@@ -172,6 +182,7 @@ export const ShopIcon = () => (
         ></path>
     </svg>
 );
+
 export const FolderIcon = () => (
     <svg
         width={widthIconNavbar}
@@ -184,6 +195,38 @@ export const FolderIcon = () => (
         <path
             fill="currentColor"
             d="M64 480H448c35.3 0 64-28.7 64-64V160c0-35.3-28.7-64-64-64H288c-10.1 0-19.6-4.7-25.6-12.8L243.2 57.6C231.1 41.5 212.1 32 192 32H64C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64z"
+        ></path>
+    </svg>
+);
+
+export const ShareIcon = () => (
+    <svg
+        width={widthIconNavbar}
+        height={heightIconNavbar}
+        className={classesNavbar}
+        role="img"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512"
+    >
+        <path
+            fill="currentColor"
+            fill-rule="evenodd"
+            d="M10.938 3.175a.674.674 0 0 1 1.138-.488l6.526 6.215c.574.547.554 1.47-.043 1.991l-6.505 5.676a.674.674 0 0 1-1.116-.508V13.49s-6.985-1.258-9.225 2.854c-.209.384-1.023.518-.857-1.395.692-3.52 2.106-9.017 10.082-9.017z"
+            clip-rule="evenodd"
+        ></path>
+        <path
+            fill="#161823"
+            fill-rule="evenodd"
+            d="m15.754 6.212 1.295 2.59a1.12 1.12 0 0 1-.268 1.349l-5.799 5.042s-.28 1.403.562 1.403 7.578-6.174 7.578-6.174.28-.842-.561-1.684c-.843-.842-2.807-2.526-2.807-2.526"
+            clip-rule="evenodd"
+            opacity=".03"
+        ></path>
+        <path
+            fill="url(#pc-share-078b3fae_a)"
+            fill-rule="evenodd"
+            d="M10.937 6.23v7.297s-6.683-.942-8.777 2.246C.146 18.839.331 12.309 3.363 9.057s7.574-2.827 7.574-2.827"
+            clip-rule="evenodd"
+            opacity=".09"
         ></path>
     </svg>
 );

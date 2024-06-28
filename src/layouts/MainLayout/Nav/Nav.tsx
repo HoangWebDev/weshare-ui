@@ -1,19 +1,11 @@
-import React, { useState, useContext } from 'react';
-import {
-    faHouse,
-    faUser,
-    faCalendarDays,
-    faTv,
-    faImage,
-    faShop,
-    faFolder,
-    faLaptopCode,
-} from '@fortawesome/free-solid-svg-icons';
+/* eslint-disable jsx-a11y/alt-text */
+import { useState, useContext } from 'react';
+import { faFolder, faLaptopCode } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import avatar from '~/assets/images/avatar.jpg'; // Giả sử đây là đường dẫn đúng
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CalendarIcon, HomeIcon, TvIcon, UserIcon, ImageIcon, ShopIcon, FolderIcon } from '~/components/Icons';
-import ResponsiveProvider, { ResponsiveContext } from '~/hooks/Provider/ResponsiveProvider';
+import { ResponsiveContext } from '~/features/Provider/ResponsiveProvider';
 
 function Nav() {
     const context = useContext(ResponsiveContext);

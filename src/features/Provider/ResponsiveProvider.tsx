@@ -1,6 +1,7 @@
-import React, { useState, useEffect, createContext, useReducer, ReactNode } from 'react';
-import { initState, reducer } from '~/hooks/Reducer/reducers';
-import { styleMenu } from '~/hooks/Reducer/actions';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect, createContext, useReducer } from 'react';
+import { initState, reducer } from '~/features/Reducer/reducers';
+import { styleMenu } from '~/features/Reducer/actions';
 import { PropChildren } from '~/types/Interface/responsiveInterface';
 
 export const ResponsiveContext = createContext({
@@ -10,13 +11,14 @@ export const ResponsiveContext = createContext({
 });
 
 function ResponsiveProvider({ children }: PropChildren) {
-    const [state, dispacth] = useReducer(reducer, initState);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [state, dispatch] = useReducer(reducer, initState);
     const [responsive, setResponsive] = useState(window.innerWidth < 768);
     const [openNav, setOpnNav] = useState(false);
 
     const toggleNav = () => {
         setOpnNav(!openNav);
-        dispacth(styleMenu());
+        dispatch(styleMenu());
     };
 
     const responsiveMain = () => {

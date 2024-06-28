@@ -1,12 +1,12 @@
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import Images from '~/assets/images/avatar.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusCircle, faCamera, faVideo, faImage, faPaperclip, faClose } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle, faVideo, faImage, faPaperclip, faClose } from '@fortawesome/free-solid-svg-icons';
 import { faHeart, faComment, faShareFromSquare } from '@fortawesome/free-regular-svg-icons';
-import ResponsiveProvider, { ResponsiveContext } from '~/hooks/Provider/ResponsiveProvider';
+import { ResponsiveContext } from '~/features/Provider/ResponsiveProvider';
 import PostForm from '~/features/Post/PostForm';
 import Contact from '~/pages/Contact/Contact';
-import Button from '~/components/Button/Buton';
+import Button from '~/components/Button/Button';
 
 function Feed() {
     const [openPost, setOpenPost] = useState(false);
@@ -71,7 +71,7 @@ function Feed() {
                 <div className="mx-0 mt-2 mb-5">
                     <div className="bg-white rounded-lg mx-0 my-2 p-4">
                         <div className="flex justify-between">
-                            <a href="" className="flex items-center gap-x-2">
+                            <a href="/" className="flex items-center gap-x-2">
                                 <img src={Images} alt="" className="w-12 h-12 rounded-full" />
                                 <div className="">
                                     <h3 className="text-base font-semibold">Username</h3>
@@ -196,7 +196,7 @@ function Feed() {
                 <div className="mx-0 mt-2 mb-5">
                     <div className="bg-white rounded-lg mx-0 my-2 p-4">
                         <div className="flex justify-between">
-                            <a href="" className="flex items-center gap-x-2">
+                            <a href="/" className="flex items-center gap-x-2">
                                 <img src={Images} alt="" className="w-12 h-12 rounded-full" />
                                 <div className="">
                                     <h3 className="text-base font-semibold">Username</h3>

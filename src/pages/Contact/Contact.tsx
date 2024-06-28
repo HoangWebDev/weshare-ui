@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { faSearch, faFilter, faEllipsisVertical, faCake } from '@fortawesome/free-solid-svg-icons';
 import avatar from '~/assets/images/avatar.jpg'; // Giả sử đây là đường dẫn đúng
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ResponsiveProvider, { ResponsiveContext } from '~/hooks/Provider/ResponsiveProvider';
+import { ResponsiveContext } from '~/features/Provider/ResponsiveProvider';
 
 function Contact() {
     const context = useContext(ResponsiveContext);
@@ -38,12 +38,12 @@ function Contact() {
                     <div className="">
                         <div className="relative flex items-center gap-x-2">
                             <a
-                                href=""
+                                href="/"
                                 className="relative text-left text-xs font-semibold mb-2 after:content-normal after:absolute after:w-full after:h-[2px] after:bg-black after:bottom-[-3px] after:left-0"
                             >
                                 Primary
                             </a>
-                            <a href="" className="text-left text-xs font-semibold mb-2">
+                            <a href="/" className="text-left text-xs font-semibold mb-2">
                                 General
                             </a>
                             <hr className="absolute bottom-1 w-full" />

@@ -1,19 +1,25 @@
+import config from '~/config';
+import { Route } from '~/types/Types/typeRoute';
+
 import Contact from '~/pages/Contact/Contact';
 import Feed from '~/pages/Feed/Feed';
 import Friend from '~/pages/Friend/Friend';
 import Shop from '~/pages/Shop/Shop';
-import Search from '~/pages/Search/Search';
-import { Route } from '~/types/Types/typeRoute';
+import Login from '~/pages/Login/Login';
+import Register from '~/pages/Register/Register';
+import { LoginLayout, MainLayout } from '~/layouts';
 
 const publicRoutes: Route[] = [
-    { path: '/', component: Feed },
-    { path: '/feed', component: Feed },
-    { path: '/friend', component: Friend },
-    { path: '/shop', component: Shop },
-    { path: '/contact', component: Contact },
-    { path: '/search', component: Search, layout: null },
+    { path: config.routes.register, component: Register, layout: LoginLayout },
+    { path: config.routes.login, component: Login, layout: LoginLayout },
 ];
 
-const privateRoutes: Route[] = [];
+const privateRoutes: Route[] = [
+    { path: config.routes.home, component: Feed, layout: MainLayout },
+    { path: config.routes.feed, component: Feed, layout: MainLayout },
+    { path: config.routes.friend, component: Friend, layout: MainLayout },
+    { path: config.routes.shop, component: Shop, layout: MainLayout },
+    { path: config.routes.contact, component: Contact, layout: MainLayout },
+];
 
 export { publicRoutes, privateRoutes };

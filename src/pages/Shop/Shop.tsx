@@ -1,10 +1,9 @@
-import React, { useState, useContext } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import Images from '~/assets/images/avatar.jpg';
 import iPhone14 from '~/assets/images/iphone14.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
-import ResponsiveProvider, { ResponsiveContext } from '~/hooks/Provider/ResponsiveProvider';
+import { ResponsiveContext } from '~/features/Provider/ResponsiveProvider';
 
 function Shop() {
     const context = useContext(ResponsiveContext);

@@ -1,37 +1,50 @@
+// Main.tsx
 import React from 'react';
 import { Fragment } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { publicRoutes } from '~/routes';
-import { MainLayout } from '~/components/Layout';
-function Main() {
+import { Routes, Route } from 'react-router-dom';
+import { publicRoutes, privateRoutes } from '~/routes';
+import PrivateRoute from '~/features/PrivateRoute/PrivateRoute';
+
+const Main: React.FC = () => {
     return (
-        <Routes>
-            {publicRoutes.map((route, index) => {
-                const Page = route.component;
+        <>
+            <Routes>
+                {/* Render các route công khai */}
+                {publicRoutes.map((route, index) => {
+                    const Layout = route.layout || React.Fragment;
+                    return (
+                        <Route
+                            key={index}
+                            path={route.path}
+                            element={
+                                <Layout>
+                                    <route.component />
+                                </Layout>
+                            }
+                        />
+                    );
+                })}
 
-                // Kiểu cho Layout là một FunctionComponent nhận vào children
-                let Layout: React.FunctionComponent<{ children: React.ReactNode }> = MainLayout;
-
-                if (route.layout) {
-                    Layout = route.layout;
-                } else if (route.layout === null) {
-                    Layout = Fragment; // Sử dụng Fragment cho trường hợp không có layout
-                }
-
-                return (
-                    <Route
-                        key={index}
-                        path={route.path}
-                        element={
-                            <Layout>
-                                <Page />
-                            </Layout>
-                        }
-                    />
-                );
-            })}
-        </Routes>
+                {/* Render các route yêu cầu đăng nhập bằng PrivateRoute */}
+                <Route element={<PrivateRoute />}>
+                    {privateRoutes.map((route, index) => {
+                        const Layout = route.layout || React.Fragment;
+                        return (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                element={
+                                    <Layout>
+                                        <route.component />
+                                    </Layout>
+                                }
+                            />
+                        );
+                    })}
+                </Route>
+            </Routes>
+        </>
     );
-}
+};
 
 export default Main;

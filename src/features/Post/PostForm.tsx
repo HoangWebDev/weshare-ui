@@ -1,9 +1,8 @@
-import React, { useState, useContext, useEffect } from 'react';
 import Images from '~/assets/images/avatar.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusCircle, faCamera, faVideo, faImage, faPaperclip, faClose } from '@fortawesome/free-solid-svg-icons';
+import { faCamera, faVideo, faImage, faPaperclip, faClose } from '@fortawesome/free-solid-svg-icons';
 import { PostFormProps } from '~/types/Interface/formInterface';
-import Button from '~/components/Button/Buton';
+import Button from '~/components/Button/Button';
 
 function PostForm({ openPost, togglePostForm }: PostFormProps) {
     return (

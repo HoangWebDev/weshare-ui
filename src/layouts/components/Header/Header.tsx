@@ -1,47 +1,76 @@
-import React, { useState, useEffect, useRef, useReducer, useContext } from 'react';
+import { useReducer, useContext, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faBell, faBookmark, faBars, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 
-import { reducer, initState } from '~/hooks/Reducer/reducers';
-import { search, styleSearch, styleMenu } from '~/hooks/Reducer/actions';
-import ResponsiveProvider, { ResponsiveContext } from '~/hooks/Provider/ResponsiveProvider';
-import Search from '../Search/Search';
+import { reducer, initState } from '~/features/Reducer/reducers';
+import { search, styleSearch, styleMenu } from '~/features/Reducer/actions';
+import { ResponsiveContext } from '~/features/Provider/ResponsiveProvider';
+import * as loginService from '~/services/Login/loginService';
+import Search from '~/features/Search/Search';
 import { BellIcon, BookMarkIcon, PersonIcon } from '~/components/Icons';
 import logo from '~/assets/images/logo.jpg'; // Giả sử đây là đường dẫn đúng
+import { jwtDecode } from 'jwt-decode';
+import User from '~/models/User';
 
 //Reducer
 function Header() {
     //Dùng useReducer thay useState
-    const [state, dispacth] = useReducer(reducer, initState);
+    const [userProfile, setUserProfile] = useState<User>({});
+    const [state, dispatch] = useReducer(reducer, initState);
     const context = useContext(ResponsiveContext);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token'); // Lấy token từ localStorage
+        if (token) {
+            const decodedToken = jwtDecode<User>(token); // Giải mã token
+            const idUser = decodedToken.id_user;
+            if (idUser) {
+                try {
+                    loginService
+                        .getUserProfile(idUser)
+                        .then((result) => {
+                            setUserProfile(result);
+                        })
+                        .catch((error) => {
+                            console.error('Lỗi giải má user:', error);
+                        });
+                    console.log('Thông tin user:', decodedToken);
+                } catch (error) {
+                    console.error('Lỗi giải mã token:', error);
+                }
+            }
+        } else {
+            console.log('Không tìm thấy token trong localStorage');
+        }
+    }, []);
 
     return (
         <header className="grid grid-cols-3 gap-4 px-5 gap-x-5 fixed inset-x-0 top-0 mx-auto bg-white z-10">
-            <div className="col-span-1 flex items-center gap-x-2.5 py-[10px] hidden md:flex">
+            <div className="col-span-1 items-center gap-x-2.5 py-[10px] hidden md:flex">
                 <img src={logo} alt="Logo" className="select-none w-8 h-8 rounded-md" />
                 <h2 className="text-xl font-bold">WeShare</h2>
             </div>
             {/* Search */}
             <Search />
-            <div className="col-span-1 flex items-center justify-end gap-x-2.5 py-[10px]  hidden md:flex">
+            <div className="col-span-1 items-center justify-end gap-x-2.5 py-[10px]  hidden md:flex">
                 <BellIcon />
                 <BookMarkIcon className="text-gray-500 rounded-md text-xl p-1 bg-gray-300" />
                 <div className="flex items-center gap-x-2 cursor-pointer">
                     <PersonIcon className="text-gray-500 rounded-md text-xl p-1 bg-gray-300 " />
-                    <h2 className="text-sm font-semibold">Name</h2>
+                    <h2 className="text-sm font-semibold">{userProfile.full_name}</h2>
                     <FontAwesomeIcon icon={faAngleDown} className="text-gray-500 rounded-md text-sm" />
                 </div>
             </div>
 
             {/* Responsive */}
 
-            <div className={context.responsive ? 'block col-span-1 flex items-center gap-x-2.5 py-[10px]' : 'hidden'}>
+            <div className={context.responsive ? 'flex col-span-1 items-center gap-x-2.5 py-[10px]' : 'hidden'}>
                 <img src={logo} alt="Logo" className="select-none w-8 h-8 rounded-md" />
                 <div className="flex items-center md:hidden ">
                     <FontAwesomeIcon
                         onClick={() => {
-                            dispacth(styleMenu());
+                            dispatch(styleMenu());
                             context.toggleNav();
                         }}
                         icon={faBars}
@@ -54,21 +83,19 @@ function Header() {
                 </div>
                 <FontAwesomeIcon
                     onClick={() => {
-                        dispacth(search());
-                        dispacth(styleSearch());
+                        dispatch(search());
+                        dispatch(styleSearch());
                     }}
                     icon={faMagnifyingGlass}
                     className={
                         state.styleSearch
-                            ? 'bg-main text-gray-50 cursor-pointer rounded-md text-xl p-[6px] bg-gray-300'
+                            ? 'bg-main text-gray-50 cursor-pointer rounded-md text-xl p-[6px]'
                             : 'cursor-pointer  text-gray-500 rounded-md text-xl p-[6px] bg-gray-300'
                     }
                 />
             </div>
             <div
-                className={
-                    context.responsive ? 'block col-span-1 flex items-center gap-x-2.5 relative py-[10px]' : 'hidden'
-                }
+                className={context.responsive ? 'flex col-span-1 items-center gap-x-2.5 relative py-[10px]' : 'hidden'}
             >
                 <input
                     // ref={inputSearch}
@@ -82,7 +109,7 @@ function Header() {
             </div>
             <div
                 className={
-                    context.responsive ? 'block col-span-1 flex items-center justify-end gap-x-2.5 py-[10px]' : 'hidden'
+                    context.responsive ? 'flex col-span-1 items-center justify-end gap-x-2.5 py-[10px]' : 'hidden'
                 }
             >
                 <FontAwesomeIcon
