@@ -4,12 +4,17 @@ import '~/styles/index.css';
 import App from '~/App';
 import reportWebVitals from '~/reportWebVitals';
 import ResponsiveProvider from '~/features/Provider/ResponsiveProvider';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
     <React.StrictMode>
         <ResponsiveProvider>
-            <App />
+            <QueryClientProvider client={queryClient}>
+                <App />
+            </QueryClientProvider>
         </ResponsiveProvider>
     </React.StrictMode>,
 );

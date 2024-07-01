@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import Images from '~/assets/images/avatar.jpg';
 import { ResponsiveContext } from '~/features/Provider/ResponsiveProvider';
 import Button from '~/components/Button/Button';
+import Image from '~/components/Image';
 
 function Friend() {
     const context = useContext(ResponsiveContext);
@@ -17,7 +17,7 @@ function Friend() {
                             to="/friend/:id"
                             className="w-friend flex flex-col gap-y-2 p-2 rounded-lg bg-white text-center"
                         >
-                            <img src={Images} alt="Friend 1" className="block rounded-lg" />
+                            <Image className="block rounded-lg" />
                             <h2 className="text-left font-semibold">Name</h2>
                             <Button className="p-2 rounded bg-main text-white outline-none transition-all hover:bg-blue-600">
                                 Thêm bạn
@@ -30,7 +30,7 @@ function Friend() {
                             to="/friend/:id"
                             className="w-friend flex flex-col gap-y-2 p-2 rounded-lg bg-white text-center"
                         >
-                            <img src={Images} alt="Friend 1" className="block rounded-lg" />
+                            <Image className="block rounded-lg" />
                             <h2 className="text-left font-semibold">Name</h2>
                             <Button className="p-2 rounded bg-main text-white outline-none transition-all hover:bg-blue-600">
                                 Thêm bạn
@@ -43,7 +43,7 @@ function Friend() {
                             to="/friend/:id"
                             className="w-friend flex flex-col gap-y-2 p-2 rounded-lg bg-white text-center"
                         >
-                            <img src={Images} alt="Friend 1" className="block rounded-lg" />
+                            <Image className="block rounded-lg" />
                             <h2 className="text-left font-semibold">Name</h2>
                             <Button className="p-2 rounded bg-main text-white outline-none transition-all hover:bg-blue-600">
                                 Thêm bạn
@@ -56,7 +56,7 @@ function Friend() {
                             to="/friend/:id"
                             className="w-friend flex flex-col gap-y-2 p-2 rounded-lg bg-white text-center"
                         >
-                            <img src={Images} alt="Friend 1" className="block rounded-lg" />
+                            <Image className="block rounded-lg" />
                             <h2 className="text-left font-semibold">Name</h2>
                             <Button className="p-2 rounded bg-main text-white outline-none transition-all hover:bg-blue-600">
                                 Thêm bạn
@@ -69,7 +69,7 @@ function Friend() {
                             to="/friend/:id"
                             className="w-friend flex flex-col gap-y-2 p-2 rounded-lg bg-white text-center"
                         >
-                            <img src={Images} alt="Friend 1" className="block rounded-lg" />
+                            <Image className="block rounded-lg" />
                             <h2 className="text-left font-semibold">Name</h2>
                             <Button className="p-2 rounded bg-main text-white outline-none transition-all hover:bg-blue-600">
                                 Thêm bạn
@@ -82,7 +82,7 @@ function Friend() {
                             to="/friend/:id"
                             className="w-friend flex flex-col gap-y-2 p-2 rounded-lg bg-white text-center"
                         >
-                            <img src={Images} alt="Friend 1" className="block rounded-lg" />
+                            <Image className="block rounded-lg" />
                             <h2 className="text-left font-semibold">Name</h2>
                             <Button className="p-2 rounded bg-main text-white outline-none transition-all hover:bg-blue-600">
                                 Thêm bạn
@@ -108,7 +108,7 @@ function Friend() {
                             to="/friend/:id"
                             className="w-full flex items-center justify-around gap-x-2 p-2 rounded-lg bg-white text-center"
                         >
-                            <img src={Images} alt="Friend 1" className="w-1/5 h-full block rounded-full" />
+                            <Image className="w-1/5 h-full block rounded-full" />
                             <div className="w-full">
                                 <h2 className="mb-2 text-left text-base font-semibold">Name</h2>
                                 <div className="flex gap-x-2">
@@ -125,7 +125,7 @@ function Friend() {
                             to="/friend/:id"
                             className="w-full flex items-center justify-around gap-x-2 p-2 rounded-lg bg-white text-center"
                         >
-                            <img src={Images} alt="Friend 1" className="w-1/5 h-full block rounded-full" />
+                            <Image className="w-1/5 h-full block rounded-full" />
                             <div className="w-full">
                                 <h2 className="mb-2 text-left text-base font-semibold">Name</h2>
                                 <div className="flex gap-x-2">

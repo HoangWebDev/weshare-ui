@@ -1,6 +1,6 @@
 import Header from '~/layouts/components/Header/Header';
 import Nav from '~/layouts/MainLayout/Nav/Nav';
-import { PropChildren } from '~/types/Interface/responsiveInterface';
+import { PropChildren } from '~/types/Interface/childrenInterface';
 
 function MainLayout({ children }: PropChildren) {
     return (

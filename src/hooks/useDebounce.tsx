@@ -4,6 +4,7 @@ function useDebounce(value: string, delay: number) {
     const [debouncedValue, setDebouncedValue] = useState(value);
 
     useEffect(() => {
+        // Settimeout thời gian fetch API
         const handler = setTimeout(() => {
             setDebouncedValue(value);
         }, delay);

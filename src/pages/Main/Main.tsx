@@ -5,13 +5,13 @@ import { Routes, Route } from 'react-router-dom';
 import { publicRoutes, privateRoutes } from '~/routes';
 import PrivateRoute from '~/features/PrivateRoute/PrivateRoute';
 
-const Main: React.FC = () => {
+const Main = () => {
     return (
         <>
             <Routes>
                 {/* Render các route công khai */}
                 {publicRoutes.map((route, index) => {
-                    const Layout = route.layout || React.Fragment;
+                    const Layout = route.layout || Fragment;
                     return (
                         <Route
                             key={index}
@@ -28,7 +28,7 @@ const Main: React.FC = () => {
                 {/* Render các route yêu cầu đăng nhập bằng PrivateRoute */}
                 <Route element={<PrivateRoute />}>
                     {privateRoutes.map((route, index) => {
-                        const Layout = route.layout || React.Fragment;
+                        const Layout = route.layout || Fragment;
                         return (
                             <Route
                                 key={index}

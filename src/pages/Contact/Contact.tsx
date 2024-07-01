@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import { faSearch, faFilter, faEllipsisVertical, faCake } from '@fortawesome/free-solid-svg-icons';
-import avatar from '~/assets/images/avatar.jpg'; // Giả sử đây là đường dẫn đúng
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ResponsiveContext } from '~/features/Provider/ResponsiveProvider';
+import Image from '~/components/Image';
 
 function Contact() {
     const context = useContext(ResponsiveContext);
@@ -51,7 +51,7 @@ function Contact() {
                         <div className="">
                             <ul>
                                 <li className="relative flex items-center gap-x-2 my-2 mr-2">
-                                    <img src={avatar} alt="" className="w-10 h-10 rounded-full" />
+                                    <Image className="w-10 h-10 rounded-full" />
                                     <span className="absolute left-7 bottom-0 w-3 h-3 bg-green-500 rounded-full border-2 border-solid border-white"></span>
                                     <h3 className="text-sm font-semibold">Name</h3>
                                 </li>

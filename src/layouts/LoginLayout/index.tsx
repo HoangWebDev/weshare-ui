@@ -1,8 +1,8 @@
 import React from 'react';
-import { PropChildren } from '~/types/Interface/responsiveInterface';
+import { PropChildren } from '~/types/Interface/childrenInterface';
 
-const LoginLayout: React.FC<PropChildren> = ({ children }) => {
+function LoginLayout({ children }: PropChildren) {
     return <div>{children}</div>;
-};
+}
 
 export default LoginLayout;

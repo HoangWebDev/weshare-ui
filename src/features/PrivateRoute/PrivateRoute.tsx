@@ -1,8 +1,9 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 
-const PrivateRoute: React.FC = () => {
+const PrivateRoute = () => {
     const isAuthenticated = isLoggedIn();
+    // const isAuthenticated = true;
 
     //Sử dụng Outlet để render các component trong privateRoute
     return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;

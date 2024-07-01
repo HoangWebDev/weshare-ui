@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import * as registerService from '~/services/Register/registerService';
 import { CloseSearchIcon } from '~/components/Icons';
 
-const Register: React.FC = () => {
+const Register = () => {
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
@@ -94,7 +94,6 @@ const Register: React.FC = () => {
                         </div>
                     </div>
                     {error && <small className="text-red-500">{error}</small>}
-
                     <div className="text-center">
                         <button
                             type="submit"

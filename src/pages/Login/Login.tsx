@@ -3,10 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import * as loginService from '~/services/Login/loginService';
 import { CloseSearchIcon } from '~/components/Icons';
 
-const Login: React.FC = () => {
+const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+
     const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent) => {

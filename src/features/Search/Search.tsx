@@ -1,49 +1,46 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useState, useRef } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import * as searchService from '~/services/Search/searchService';
 import { SearchIcon, CloseSearchIcon, SpinnerIcon } from '~/components/Icons';
 
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import ListItem from '~/components/ListItem/ListItem';
 import Tippy from '@tippyjs/react/headless';
-import useDebounce from '~/hooks/useDebounce';
-
-interface SearchResult {
-    id_user: number;
-    // Thêm các thuộc tính khác nếu cần
-}
+import { useDebounce } from '~/hooks';
+import UserModel from '~/models/User';
 
 function Search() {
     const [searchValue, setSearchValue] = useState('');
-    const [searchResult, setSearchResult] = useState<SearchResult[]>([]);
-    const [showResult, setShowResult] = useState(true);
-    const [isLoading, setIsLoading] = useState(false);
+    const [searchResult, setSearchResult] = useState<UserModel[]>([]);
+    const [showResult, setShowResult] = useState(false);
 
     const debounced = useDebounce(searchValue, 500);
 
     const inputRef = useRef<HTMLInputElement>(null);
 
-    useEffect(() => {
-        if (!searchValue.trim()) {
-            setSearchResult([]);
-            return;
-        }
-
-        const fetchApi = async () => {
+    const { isLoading, data } = useQuery<UserModel[]>({
+        queryKey: ['userSearch', debounced],
+        queryFn: async () => {
+            if (!debounced) return [];
             try {
-                setIsLoading(true);
-                const result = await searchService.search(debounced);
-                if (result.length > 0) setSearchResult(result);
-                setIsLoading(false);
+                const result = await searchService.search(encodeURIComponent(debounced));
+                return result;
             } catch (error) {
-                console.error(error); // Handle errors appropriately
-                setIsLoading(false);
+                console.error(error); // Xử lý lỗi phù hợp
+                return [];
             }
-        };
+        },
+        enabled: !!debounced, // Chỉ chạy truy vấn nếu giá trị debounced không rỗng
+    });
 
-        fetchApi();
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [debounced]);
+    useEffect(() => {
+        if (data) {
+            setSearchResult(data);
+        } else {
+            setSearchResult([]);
+        }
+    }, [data]);
 
     const handleClear = () => {
         setSearchValue('');
@@ -62,24 +59,27 @@ function Search() {
 
         if (!searchValue.startsWith(' ')) {
             setSearchValue(searchValue);
+            setSearchResult([]); // Clear the old results
         }
     };
 
     return (
         <Tippy
             appendTo={document.body}
-            visible={showResult && (searchResult.length > 0 || searchValue.trim().length > 0)}
+            visible={showResult && (searchResult.length > 0 || searchValue.trim().length === 0)}
             interactive
             placement="bottom"
             render={(attrs) => (
                 <div className="w-[485px]" tabIndex={-1} {...attrs}>
                     <PopperWrapper>
-                        <h4 className="w-full text-left text-[#928c8c]">Search Result</h4>
-                        {searchResult?.length > 0 ? (
-                            searchResult.map((result) => <ListItem key={result.id_user} data={result} />)
-                        ) : (
-                            <div className="text-center text-[#928c8c]">Không tìm thấy kết quả nào</div>
-                        )}
+                        <div className="w-full bg-[#e5e5e5] -mt-3 rounded py-3 px-2">
+                            <h4 className="w-full text-left text-[#928c8c]">Search Result</h4>
+                            {!searchValue.trim() ? (
+                                <div className="text-center text-[#928c8c]">Vui lòng nhập từ khóa để tìm kiếm</div>
+                            ) : (
+                                searchResult.map((result) => <ListItem key={result.id_user} data={result} />)
+                            )}
+                        </div>
                     </PopperWrapper>
                 </div>
             )}

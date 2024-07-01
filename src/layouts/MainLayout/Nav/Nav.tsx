@@ -6,10 +6,13 @@ import avatar from '~/assets/images/avatar.jpg'; // Giả sử đây là đườ
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CalendarIcon, HomeIcon, TvIcon, UserIcon, ImageIcon, ShopIcon, FolderIcon } from '~/components/Icons';
 import { ResponsiveContext } from '~/features/Provider/ResponsiveProvider';
+import Profile from '~/features/Profile';
 
 function Nav() {
     const context = useContext(ResponsiveContext);
     const [menu, setMenu] = useState('feed');
+
+    const userProfile = Profile();
 
     const handleMenu = (id: string) => {
         setMenu(id);
@@ -29,8 +32,8 @@ function Nav() {
                         <div className="flex items-center gap-x-2 justify-center">
                             <img src={avatar} className="rounded w-12 h-12" />
                             <div>
-                                <h2 className="font-bold">Name</h2>
-                                <span className="text-gray-400 text-xs">@huynhhoang</span>
+                                <h2 className="font-bold">{userProfile.full_name}</h2>
+                                <span className="text-gray-400 text-xs">{userProfile.email}</span>
                             </div>
                         </div>
                         <div className="flex items-center justify-center gap-x-2 mt-[15px]">

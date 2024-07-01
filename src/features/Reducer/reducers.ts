@@ -1,4 +1,4 @@
-import { StateType, ActionType } from "~/types/Types/reducarTypes";
+import { StateType, ActionType } from "~/types/Types/reducerTypes";
 import { SEARCH, STYLESEARCH, STYLEMENU } from "./contants"
 
 //InitState

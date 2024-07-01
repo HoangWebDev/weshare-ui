@@ -2,7 +2,7 @@
 import { useState, useEffect, createContext, useReducer } from 'react';
 import { initState, reducer } from '~/features/Reducer/reducers';
 import { styleMenu } from '~/features/Reducer/actions';
-import { PropChildren } from '~/types/Interface/responsiveInterface';
+import { PropChildren } from '~/types/Interface/childrenInterface';
 
 export const ResponsiveContext = createContext({
     responsive: false,

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { PropChildren } from '~/types/Interface/responsiveInterface';
+import { PropChildren } from '~/types/Interface/childrenInterface';
 import { Link } from 'react-router-dom';
 function Button({ children, to, href, className, onClick, ...passProp }: PropChildren) {
     let Component: React.ElementType = 'button';

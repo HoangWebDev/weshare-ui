@@ -14,9 +14,7 @@ export const login = async (username: string, password: string) => {
 
 export const getUserProfile = async (id: number) => {
     try {
-        const result = await instance.getApiId(`users/`, id);
-        console.log(result);
-
+        const result = await instance.getApiId(`users`, id);
         return result;
     } catch (error) {
         console.log(error);
